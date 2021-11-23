@@ -24,9 +24,18 @@ class ClasseRequest extends FormRequest
     public function rules()
     {
         return [
-            'libelle'=>'required',
+            'libelle'=>'required|unique:classes',
             'place'=>'required',
             'etage'=>'required',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+             'libelle.required'=>'le champs libelle est obligatoire',
+             'place.required'=>'le champs place est obligatoire',
+             'etage.required'=>'le champs etage est obligatoire',
         ];
     }
 }

@@ -14,8 +14,8 @@ use App\Http\Controllers\ClasseController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-// Route::post('/sms',[SmSController::class,'sms'])->name('sms');
-// Route::get('/send',[SmSController::class,'send']);
+Route::post('/sms',[SmSController::class,'sms']);
+Route::get('/send',[SmSController::class,'send']);
 Route::get('/', function () {
     return view('welcome');
 });
@@ -26,10 +26,3 @@ Route::get('/classes',[ClasseController::class,'index'])->name('index');
 Route::get('classes/form',[ClasseController::class,'form'])->name('form');
 //route en relation pour stocker les données a travèrs le formulaire
 Route::post('classe/store',[ClasseController::class,'store'])->name('store');
-Route::delete('/supprimer/{id}',[ClasseController::class,'deletes'])->name('supprimer');
-Route::get('/edit/{id}',[ClasseController::class,'edit'])->name('edit');
-
-Route::put('/updates/de/{id}',[ClasseController::class,'updates'])->name('updates');
-
-
-// Route::resource('Eleves',EleveController::class);
