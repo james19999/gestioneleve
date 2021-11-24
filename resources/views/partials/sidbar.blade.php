@@ -45,10 +45,10 @@
         <div class="collapse" id="ui-basic">
           <ul class="nav flex-column sub-menu">
             <li class="nav-item">
-              <a class="nav-link" href="{{ route('index') }}"> Elève </a>
+              <a class="nav-link" href="{{ route('eleves.index') }}"> Elève </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="">Classe</a>
+              <a class="nav-link" href="{{ route('index') }}">Classe</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="">Matières</a>

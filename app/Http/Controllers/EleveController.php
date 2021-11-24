@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Eleve;
+use App\Models\Classe;
 use Illuminate\Http\Request;
+use App\Http\Requests\EleveRequest;
 
 class EleveController extends Controller
 {
@@ -13,7 +16,9 @@ class EleveController extends Controller
      */
     public function index()
     {
-        //
+        $Eleves=Eleve::with('classes')->get();
+
+        return view('eleves.index',compact('Eleves'));
     }
 
     /**
@@ -23,7 +28,8 @@ class EleveController extends Controller
      */
     public function create()
     {
-        //
+        $Classes=Classe::all();
+        return view('eleves.create',compact('Classes'));
     }
 
     /**
@@ -32,9 +38,12 @@ class EleveController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(EleveRequest $request)
     {
-        //
+        Eleve::create($request->validated());
+
+        return redirect()->route('eleves.index');
+        // return back();
     }
 
     /**
@@ -45,7 +54,9 @@ class EleveController extends Controller
      */
     public function show($id)
     {
-        //
+        $Eleves=Eleve::findOrfail($id);
+        
+        return view('eleves.show',compact('Eleves'));
     }
 
     /**
@@ -56,7 +67,10 @@ class EleveController extends Controller
      */
     public function edit($id)
     {
-        //
+        $Eleves=Eleve::findOrfail($id);
+        $Classes=Classe::all();
+
+        return view('eleves.edit',compact('Eleves','Classes'));
     }
 
     /**
@@ -66,9 +80,12 @@ class EleveController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(EleveRequest $request, $id)
     {
-        //
+        $Eleves=Eleve::findOrfail($id);
+        $Eleves->update($request->validated());
+        return redirect()->route('eleves.index');
+
     }
 
     /**
@@ -79,6 +96,7 @@ class EleveController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Eleve::destroy($id);
+        return back();
     }
 }

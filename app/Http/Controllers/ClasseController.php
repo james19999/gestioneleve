@@ -27,8 +27,8 @@ class ClasseController extends Controller
         //     'etage'=>'required',
         // ]);
 
-           Classe::create($request->validated());
-       session()->flash('message',"la classe   à été bien créer ");
+      $pu=Classe::create($request->validated());
+       session()->flash('message',"la classe $pu->libelle  à été bien créer ");
         // event(new ClasseEvent($classes));
         // Classe::create(['libelle'=>$request->libelle,'place'=>$request->place,'etage'=>$request->etage]);
         return  redirect()->route('index')  ;

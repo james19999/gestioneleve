@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SmSController;
+use App\Http\Controllers\EleveController;
 use App\Http\Controllers\ClasseController;
 
 /*
@@ -32,4 +33,4 @@ Route::get('/edit/{id}',[ClasseController::class,'edit'])->name('edit');
 Route::put('/updates/de/{id}',[ClasseController::class,'updates'])->name('updates');
 
 
-// Route::resource('Eleves',EleveController::class);
+Route::resource('eleves',EleveController::class);
